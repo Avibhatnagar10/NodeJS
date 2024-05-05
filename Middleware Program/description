@@ -1,0 +1,29 @@
+Middleware functions in Express.js are functions that have access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle. These functions can execute any code, make changes to the request and response objects, end the request-response cycle, and call the next middleware function in the stack.
+
+Middleware functions can be used for various purposes such as logging, authentication, error handling, modifying request or response objects, etc.
+
+Here's a breakdown of the middleware used in the provided program:
+    
+logMiddleware:
+
+This middleware function logs the current date and time, request method, and URL to the console.
+It takes three parameters: req (request object), res (response object), and next (callback function to call the next middleware).
+Inside the function, it logs the request details using console.log().
+It calls the next() function to pass control to the next middleware function in the stack.
+    
+customHeaderMiddleware:
+    
+This middleware function adds a custom header (X-Custom-Header) to the response.
+It takes three parameters: req (request object), res (response object), and next (callback function to call the next middleware).
+Inside the function, it sets a custom header using res.setHeader().
+It calls the next() function to pass control to the next middleware function in the stack.
+    
+app.use():
+    
+The app.use() method is used to apply middleware functions globally to all routes in the application.
+In the provided code, both logMiddleware and customHeaderMiddleware are applied globally using app.use().
+    
+Route Handler:
+
+A simple route handler is defined for the root URL ('/').
+When a request is made to the root URL, the route handler sends the response 'Hello World!'.
